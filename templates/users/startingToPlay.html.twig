@@ -54,6 +54,21 @@
     </section>
 
     <p>
-        <a href="{{ path('user_game_playing', {'id_game' : game.id}) }}">Démarrer le jeu</a>
+        <a id="game_starter" href="{{ path('user_game_playing', {'id_game' : game.id}) }}">Démarrer le jeu</a>
     </p>
 {% endblock %}
+
+<script>
+    const playerLevelInString = "{{ player.userLevel }}";
+    const gameRequiredLevelInString = "{{ game.requiredLevel }}";
+    const gameRequiredLevel = JSON.parse(gameRequiredLevelInString);
+    const playerLevel = JSON.parse(playerLevelInString);
+    const starterButton = document.getElementById("game_starter");
+
+    starterButton.addEventListener("click", (e) => {
+        if(playerLevel < gameRequiredLevel) {
+            e.preventDefault();
+            alert("Vous n'avez pas le niveau requis pour jouer au jeu");
+        }
+    })
+</script>
