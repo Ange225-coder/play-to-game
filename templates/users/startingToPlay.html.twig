@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Play To A Game {{ game.name }}{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('error') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <section>
+        <h1>Commencer à jouer</h1>
+
+        <div>
+            <p>
+                <strong>Nom du jeu : </strong> <em>{{ game.name }}</em>
+            </p>
+
+            <p>
+                <strong>Type : </strong> <em>{{ game.type }}</em>
+            </p>
+
+            <p>
+                <strong>Niveau minimal requis pour jouer : </strong> <em>{{ game.requiredLevel }}</em>
+            </p>
+
+            <p>
+                <strong>Nombre de joueurs requis : </strong> <em>{{ game.numberOfPlayers }}</em>
+            </p>
+        </div>
+    </section>
+
+    <hr>
+
+    <section>
+
+        <details>
+            <summary>Nombre de joueur inscrit pour {{ game.name }}</summary>
+        </details>
+
+        <h1>Infos joueur</h1>
+
+        <div>
+            <p>
+                <strong>Nom de joueur : </strong> {{ player.gameNickname }}
+            </p>
+
+            <p>
+                <strong>Niveau actuel : </strong> {{ player.userLevel }}
+            </p>
+        </div>
+    </section>
+
+    <p>
+        <a href="{{ path('user_game_playing', {'id_game' : game.id}) }}">Démarrer le jeu</a>
+    </p>
+{% endblock %}

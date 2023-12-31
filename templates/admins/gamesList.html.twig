@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion | Liste des jeux{% endblock %}
+
+{% block body %}
+    <p>
+        <a href="{{ path('admin_dashboard') }}">Tableau de bord</a>
+    </p>
+    <section>
+        <h1>Gestion | Liste des jeux</h1>
+
+        <h2>Catégories : </h2>
+
+        <div class="flex">
+            <div>
+                <h3>1 player</h3>
+
+                {% for onePlayer in onePlayerGames %}
+                    <ul>
+                        <li>
+                            {{ onePlayer.name }}<br >
+                            <!--<a href="#">Play</a>-->
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+
+
+            <div>
+                <h3>2 players</h3>
+
+                {% for twoPlayers in twoPlayersGames %}
+                    <ul>
+                        <li>
+                            {{ twoPlayers.name }}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+
+
+            <div>
+                <h3>3 players</h3>
+
+                {% for threePlayers in threePlayersGames %}
+                    <ul>
+                        <li>
+                            {{ threePlayers.name }}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+
+
+            <div>
+                <h3>4 players</h3>
+
+                {% for forPlayers in forPlayersGames %}
+                    <ul>
+                        <li>
+                            {{ forPlayers.name }}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+{% block stylesheets %}
+<style>
+    .flex {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PLAY TO GAME - Accueil{% endblock %}
+
+{% block body %}
+    <section>
+        <div>
+            <h1>Bienvenu à PLAY TO GAME</h1>
+
+             <p>
+                 <a href="{{ path('public_games_list') }}">Commencer</a>
+             </p>
+        </div>
+
+        <div>
+            <p>
+                <a href="{{ path('admin_home') }}">Gestion</a>
+            </p>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block stylesheets %}
+    <style>
+        section {
+        {#border: 1px solid red;
+        #}
+
+        div {
+        {#border: 1px solid blue;
+        #}
+    </style>
+{% endblock %}

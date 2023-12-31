@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion{% endblock%}
+
+{% block body %}
+    {% if app.user.username is not defined %}
+        <section>
+            <p>
+                <a href="{{ path('admin_registration') }}">S'enregistrer</a>
+            </p>
+
+            <p>
+                <a href="{{ path('admin_login') }}">S'authentifier</a>
+            </p>
+        </section>
+    {% endif %}
+
+    {% if app.user.username  is defined %}
+        <section>
+            <p>
+                <a href="{{ path('admin_dashboard') }}">Tableau de bord<a>
+            </p>
+
+            <p>
+                <a href="{{ path('admin_logout') }}" style="color: red;">Se déconnecter</a>
+            </p>
+        </section>
+    {% endif %}
+{% endblock %}

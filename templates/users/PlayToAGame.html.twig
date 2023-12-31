@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Play To A Game | {{ game.name }}{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>{{ game.name }}</h1>
+
+        <p>
+            <strong>Type :</strong> <em>{{ game.type }}</em>
+        </p>
+
+        <p>
+            <strong>Niveau requis pour jouer : </strong> <em>{{ game.requiredLevel }}</em>
+        </p>
+
+        <p>
+            <strong>Nombre de joueurs requis : </strong> <em>{{ game.numberOfPlayers }}</em>
+        </p>
+
+        <p>
+             <strong>Votre niveau de jeu actuel : </strong> <em>{{ app.user.currentLevel }}</em>
+        </p>
+
+
+        {% if app.user.pseudonyme is defined and gameNickname.gameNickname is not defined %}
+
+            <div>
+                {{ form_start(nicknameForm, {'attr' : {'novalidate' : 'novalidate'}}) }}
+                <div>
+
+                    <div style="margin-bottom: 15px">
+                        {{ form_errors(nicknameForm.gameNickname) }}
+                        <em>{{ form_label(nicknameForm.gameNickname) }}</em><br >
+                        {{ form_widget(nicknameForm.gameNickname) }}
+                    </div>
+
+                    <button type="submit">Jouer à {{ game.name }}</button>
+                </div>
+                {{ form_end(nicknameForm) }}
+            </div>
+
+        {% endif %}
+
+
+        {% if app.user.pseudonyme is defined and gameNickname.gameNickname is defined %}
+            <p>
+                <strong>Pseudo-joueur : </strong> <em>{{ gameNickname.gameNickname }}</em>
+            </p>
+
+            <p>
+                <a href="{{ path('user_game_start', {'id_game' : game.id}) }}">Jouer à {{ game.name }}</a>
+            </p>
+        {% endif %}
+    </section>
+{% endblock %}

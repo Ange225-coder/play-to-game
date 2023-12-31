@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion | Ajouter un jeu{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Gestion | Ajout de jeu</h1>
+
+
+        {{ form_start(saving, {'attr' : {'novalidate' : 'novalidate'}}) }}
+            <div>
+                <div>
+                    {{ form_errors(saving.name) }}
+                    {{ form_label(saving.name) }}<br>
+                    {{ form_widget(saving.name) }}
+                </div>
+
+                <div style="margin-bottom: 15px; margin-top: 15px;">
+                    {{ form_errors(saving.type) }}
+                    {{ form_label(saving.type) }}<br >
+                    {{ form_widget(saving.type) }}
+                </div>
+
+                <div>
+                    {{ form_errors(saving.requiredLevel) }}
+                    {{ form_label(saving.requiredLevel) }}<br >
+                    {{ form_widget(saving.requiredLevel) }}
+                </div>
+
+                <div style="margin-top: 15px">
+                    {{ form_errors(saving.numberOfPlayers) }}
+                    {{ form_label(saving.numberOfPlayers) }}<br >
+                    {{ form_widget(saving.numberOfPlayers) }}
+                </div>
+
+                <button type="submit" style="margin-top: 15px">Ajouter le jeu</button>
+            </div>
+        {{ form_end(saving) }}
+    </section>
+{% endblock %}

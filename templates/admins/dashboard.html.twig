@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion | Tableau de bord{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Tableau de bord</h1>
+
+        <p>
+            <a href="{{ path('admin_games_saving') }}">Ajouter un jeu</a>
+        </p>
+
+        <p>
+            <a href="{{ path('admin_games_list') }}">Liste des jeux</a>
+        </p>
+
+        <p>
+            <a href="{{ path('admin_logout') }}" style="color: red;">Déconnexion</a>
+        </p>
+    </section>
+{% endblock %}

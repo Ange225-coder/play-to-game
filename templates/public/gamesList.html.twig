@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Play To Games - Listes des jeux {% endblock %}
+
+{% block body %}
+    <p>
+        <a href="{{ path('home_page') }}">HOME</a>
+    </p>
+
+    <section>
+        <h1>Liste des jeux</h1>
+
+        {% if app.user.pseudonyme is not defined %}
+            <h2>Pour jouer nos jeux, vous devez posséder un compte</h2>
+
+            <h3>
+                <a href="{{ path('user_registration') }}">S'inscrire</a> | <a href="{{ path('user_login') }}">Se connecter</a>
+            </h3>
+        {% endif %}
+
+        {% if app.user.pseudonyme is defined %}
+            <p>
+                <a href="{{ path('user_logout') }}" style="color: red;">Déconnexion</a>
+            </p>
+        {% endif %}
+
+        <div class="flex">
+            <div>
+                <h3>1 player</h3>
+
+                {% for onePlayer in onePlayerGames %}
+                    <ul>
+                        <li>
+                            {{ onePlayer.name }}<br >
+                            {% if app.user.pseudonyme is defined %}
+                                <a href="{{ path('user_game_registration', {'id_game' : onePlayer.id}) }}">Play</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+
+
+            <div>
+                <h3>2 players</h3>
+
+                {% for twoPlayers in twoPlayersGames %}
+                    <ul>
+                        <li>
+                            {{ twoPlayers.name }}<br >
+                            {% if app.user.pseudonyme is defined %}
+                                <a href="{{ path('user_game_registration', {'id_game' : twoPlayers.id}) }}">Play</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+
+
+            <div>
+                <h3>3 players</h3>
+
+                {% for threePlayers in threePlayersGames %}
+                    <ul>
+                        <li>
+                            {{ threePlayers.name }}<br >
+                            {% if app.user.pseudonyme is defined %}
+                                <a href="{{ path('user_game_registration', {'id_game' : threePlayers.id}) }}">Play</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+
+
+            <div>
+                <h3>4 players</h3>
+
+                {% for forPlayers in forPlayersGames %}
+                    <ul>
+                        <li>
+                            {{ forPlayers.name }}<br >
+                            {% if app.user.pseudonyme is defined %}
+                                <a href="{{ path('user_game_registration', {'id_game' : forPlayers.id}) }}">Play</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+{% block stylesheets %}
+    <style>
+        .flex {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+{% endblock %}

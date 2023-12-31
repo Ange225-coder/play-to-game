@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Play To Game | inscription {% endblock %}
+
+{% block body %}
+    <section>
+
+        <h1>S'enregistrer</h1>
+
+        {{ form_start(registration, {'attr' : {'novalidate' : 'novalidate'}}) }}
+            <div class="grid">
+                <div>
+                    {{ form_errors(registration.pseudonyme) }}
+                    {{ form_label(registration.pseudonyme) }}<br >
+                    {{ form_widget(registration.pseudonyme) }}
+                </div>
+
+                <div>
+                    {{ form_errors(registration.email) }}
+                    {{ form_label(registration.email) }}<br >
+                    {{ form_widget(registration.email) }}
+                </div>
+
+                <div>
+                    {{ form_errors(registration.currentLevel) }}
+                    {{ form_label(registration.currentLevel) }}<br >
+                    {{ form_widget(registration.currentLevel) }}
+                </div>
+
+                <div>
+                    {{ form_errors(registration.password) }}
+                    {{ form_label(registration.password) }}<br >
+                    {{ form_widget(registration.password) }}
+                </div>
+
+
+                <div>
+                    <button type="submit">s'enregistrer</button>
+                </div>
+            </div>
+        {{ form_end(registration) }}
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block stylesheets %}
+    <style>
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+    </style>
+{% endblock %}
